@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ASCEND | REGISTER</title>
+</head>
+<body>
+    <div class="title">Register</div>
+    <div class="phone-container">
+        <div class="phone-frame">
+            <form class="form-container" method="POST" onsubmit="register(event)">
+                <div class="short-divider"></div>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+                
+                <div class="form-group dropdown-container">
+                    <label for="country">Country</label>
+                    <select id="country" name="country" required>
+                        <option value="" disabled selected>Select your country</option>
+                        <option value="us">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="ca">Canada</option>
+                        <option value="au">Australia</option>
+                        <option value="id">Indonesia</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <button type="submit" class="btn">Create Account</button>
+                
+                <div class="divider"></div>
+                
+                <p class="footer-text">Already have an account? <a href="Login.html">Log In</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        function register(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const country = document.getElementById('country').value;
+            const phone = document.getElementById('phone').value;
+
+            if (name.trim() === '' || email.trim() === '' || password.trim() === '' || country === '') {
+                    alert('Please fill out all required fields');
+                    return;
+            }
+            
+            if (password.length < 6) {
+                    alert('Password must be at least 6 characters');
+                    return;
+            }
+            const data = {name, email, password, country, phone};
+            
+            fetch('http://localhost:3000/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                alert(response.message);
+                if (response.message === "Registration successful") {
+                    window.location.href = "Login.html";
+                }
+            })
+                .catch(error => {
+                    console.error("Error: ", error);
+                    alert("Something went wrong!");
+            });
+        }
+    </script>
+</body>
+</html>

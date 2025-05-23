@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ASCEND | SEARCH</title>
+</head>
+<body>
+    <div class="title">Searching</div>
+    <div class="phone-container">
+        <div class="phone-frame">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search..." />
+                    <div class="search-button"></div>
+                </div>
+
+                <div class="search-results">
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item selected" onclick="toggleSelection(this)"></div>
+                    <div class="search-item" onclick="toggleSelection(this)"></div>
+                    <div class="search-item selected" onclick="toggleSelection(this)"></div>
+                    <div class="search-item selected" onclick="toggleSelection(this)"></div>
+                </div>
+
+                <div class="search-info">
+                    <div class="search-info-line"></div>
+                    <div class="search-info-line"></div>
+                    <div class="search-info-line"></div>
+                </div>
+
+                <div class="search-pagination">
+                    <div class="pagination-dot" onclick="setActiveDot(0)"></div>
+                    <div class="pagination-dot active" onclick="setActiveDot(1)"></div>
+                    <div class="pagination-dot" onclick="setActiveDot(2)"></div>
+                    <div class="pagination-dot" onclick="setActiveDot(3)"></div>
+                    <div class="pagination-dot" onclick="setActiveDot(4)"></div>
+                </div>
+
+                <div class="nav-links">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    <a href="material.html" class="nav-link">Materials</a>
+                    <a href="video.html" class="nav-link">Videos</a>
+                    <a href="login.html" class="nav-link">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSelection(element) {
+            element.classList.toggle('selected');
+        }
+        
+        function setActiveDot(index) {
+            const dots = document.querySelectorAll('.pagination-dot');
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ASCEND | DASHBOARD</title>
+</head>
+<body>
+    <div class="title">Dashboard</div>
+    <div class="phone-container">
+        <div class="phone-frame">
+            <div class="dashboard-container">
+                <div class="dashboard-header">
+                    <div class="profile-circle"></div>
+                    <div class="notification-badge"></div>
+                </div>
+
+                <div class="dashboard-quick-actions">
+                    <div class="quick-action" onclick="navigateTo('Material.html')"></div>
+                    <div class="quick-action" onclick="navigateTo('Searching.html')"></div>
+                    <div class="quick-action" onclick="navigateTo('Video.html')"></div>
+                    <div class="quick-action"></div>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                </div>
+
+                <div class="dashboard-placeholder"></div>
+
+                <div class="dashboard-content">
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                    <div class="content-lines"></div>
+                </div>
+
+                <div class="nav-links">
+                    <a href="Material.html" class="nav-link">Materials</a>
+                    <a href="Searching.html" class="nav-link">Search</a>
+                    <a href="Video.html" class="nav-link">Videos</a>
+                    <a href="Login.html" class="nav-link">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            window.location.href = 'Login.html';
+        }
+    </script>
+</body>
+</html>
